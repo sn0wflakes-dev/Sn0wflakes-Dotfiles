@@ -1,0 +1,150 @@
+{
+  "position": "top",
+  "output": "HDMI-A-1",
+  "modules-left": [
+    "custom/launcher",
+    "hyprland/workspaces",
+    "cpu",
+    "temperature",
+    "memory"
+  ],
+
+  "modules-center": [
+    "custom/music_prev",
+    "custom/music_toggle",
+    "custom/music_next",
+    "custom/music"
+  ],
+  "modules-right": ["network", "pulseaudio", "battery", "clock"],
+
+  "custom/launcher": {
+    "format": "<span size='13000'></span>",
+    "tooltip": "false",
+    "on-click": "sleep 0.1 && wofi --show drun"
+  },
+
+  "hyprland/workspaces": {
+    "active-only": false,
+    "all-outputs": true,
+    "disable-scroll": false,
+    "on-scroll-up": "hyprctl dispatch workspace -1",
+    "on-scroll-down": "hyprctl dispatch workspace +1",
+    "format": "<span size='13000'>{icon}</span>",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "六",
+      "2": "七",
+      "3": "八",
+      "4": "九",
+      "5": "十",
+      "urgent": "",
+      "active": "❅",
+      "default": "󰧞",
+      "sort-by-number": true
+    }
+  },
+
+  "custom/music": {
+    "format": "{}",
+    "escape": true,
+    "interval": 1,
+    "tooltip": true,
+    "exec": "playerctl --player=spotify metadata --format='{{ default(title,playerName) }}' 2> /dev/null",
+    "on-click": "playerctl --player=spotify play-pause",
+    "on-scroll-up": "playerctl --player=spotify next",
+    "on-scroll-down": "playerctl --player=spotify previous",
+    "max-length": 30
+  },
+
+  "custom/music_prev": {
+    "format": "<span size='15000'>󰒮</span>",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "playerctl --player=spotify metadata 2> /dev/null",
+    "on-click": "playerctl --player=spotify previous"
+  },
+
+  "custom/music_toggle": {
+    "format": "<span size='15000'>{icon}</span>",
+    "return-type": "json",
+    "exec": "playerctl  --player=spotify -a metadata --format '{\"text\": \"{{playerName}} : {{artist}} - {{markup_escape(default(title, \"\"))}}\", \"tooltip\": \"{{playerName}} : {{markup_escape(default(title,\"\"))}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F 2> /dev/null",
+    "format-icons": {
+      "Playing": "󰏤",
+      "Paused": "󰐊",
+      "Stopped": "󰐊"
+    },
+    "on-click": "playerctl --player=spotify play-pause"
+  },
+
+  "custom/music_next": {
+    "format": "<span size='15000'>󰒭</span>",
+    "interval": 1,
+    "tooltip": false,
+    "exec": "playerctl --player=spotify metadata 2> /dev/null",
+    "on-click": "playerctl --player=spotify next"
+  },
+
+  "cpu": {
+    // "format": "{usage}% ",
+    "format": "{usage}% <span size='13000'></span>",
+    "tooltip": true,
+    "on-click": "alacritty btop",
+    "interval": 1
+  },
+
+  "temperature": {
+    "thermal-zone": 2,
+    "critical-threshold": 40,
+    "format-critical": "{temperatureC}°C <span size='13000'>{icon}</span>",
+    "format": "{temperatureC}°C <span size='13000'>{icon}</span>",
+    "format-icons": ["", "", ""],
+    "tooltip": true,
+    "on-click": "alacritty btop",
+    "interval": 1
+  },
+
+  "memory": {
+    "format": "{}% <span size='13000'></span>",
+    "tooltip": true,
+    "on-click": "alacritty btop",
+    "interval": 1
+  },
+
+  "clock": {
+    "format": " {:%a %Y-%M-%d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{capacity}% <span size='13000' foreground='#8aadf4'>{icon}</span>",
+    "format-warning": "{capacity}% <span size='13000' foreground='#8aadf4'>{icon}</span>",
+    "format-critical": "{capacity}% <span size='13000' foreground='#8aadf4'>{icon}</span>",
+    "format-charging": "{capacity}% <span size='13000' foreground='#8aadf4'></span>",
+    "format-plugged": "{capacity}% <span size='13000' foreground='#8aadf4'></span>",
+    "format-alt": "{time} <span size='13000' foreground='#8aadf4'>{icon}</span>",
+    "format-full": "{capacity}% <span size='13000' foreground='#8aadf4'></span>",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "{time}"
+  },
+
+  "network": {
+    "format-wifi": "{essid} <span size='13000' foreground='#8aadf4'> </span>",
+    "format-ethernet": "Disconnected <span size='13000' foreground='#8aadf4'>󰤭 </span>",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected <span size='13000' foreground='#8aadf4'> </span>",
+    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "]
+    },
+    "on-click": "pavucontrol"
+  }
+}

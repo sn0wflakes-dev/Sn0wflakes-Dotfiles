@@ -1,0 +1,185 @@
+@import "macchiato.css";
+
+* {
+  font-family: "FiraCode Nerd Font";
+  font-size: 14px;
+  min-height: 0;
+  font-weight: bold;
+}
+
+window#waybar {
+  background: rgba(30, 30, 46, 0.9);
+  color: @base;
+  transition-duration: 0.1s;
+}
+
+#workspaces {
+  background: rgba(30, 30, 46, 0);
+  margin: 5px 5px 5px 5px;
+  padding: 0px 6px 0px 6px;
+  border-radius: 16px;
+  border: solid 0px #f4d9e1;
+}
+
+#window {
+  margin: 8px;
+  padding-left: 8px;
+  padding-right: 8px;
+  color: @pink;
+}
+
+button {
+  box-shadow: inset 0 -3px transparent;
+  border: none;
+  padding: 0px 5px;
+  border-radius: 0;
+}
+
+button:hover {
+  background: inherit;
+  color: @pink;
+}
+
+#workspaces button {
+  padding: 0 4px;
+  color: @overlay1;
+  border-radius: 16px;
+}
+
+#workspaces button.focused {
+  background-color: rgba(0, 0, 0, 0);
+  color: @pink;
+  border-radius: 16px;
+}
+
+#workspaces button.active {
+  background-color: rgba(0, 0, 0, 0);
+  color: @pink;
+  border-radius: 16px;
+}
+
+#workspaces button.urgent {
+  background: rgba(30, 30, 46, 0);
+  color: @pink;
+  border-radius: 16px;
+}
+
+#pulseaudio,
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#wireplumber,
+#network,
+#mode,
+#custom-music_prev,
+#custom-music_toggle,
+#custom-music_next,
+#custom-music,
+#custom-launcher,
+#scratchpad {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 4px;
+  margin-right: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#custom-music_prev,
+#custom-music_toggle,
+#custom-music,
+#custom-music_next {
+  color: @teal;
+}
+
+#clock {
+  color: @peach;
+}
+
+#clock.date {
+  color: @peach;
+}
+
+#backlight{
+  color: @sky;
+  padding-right: 1.25rem;
+}
+
+#pulseaudio {
+  color: @green;
+  padding-right: 1.25rem;
+}
+
+#network {
+  color: @teal;
+  padding-right: 1.25rem;
+}
+
+#battery {
+  color: @sapphire;
+  padding-right: 1.25rem;
+}
+
+#custom-launcher {
+  color: @blue;
+}
+
+#cpu {
+  color: @blue;
+  padding-right: 1.25rem;
+}
+
+#disk {
+  color: @pink;
+}
+
+#memory {
+  color: @blue;
+  padding-right: 1.25rem;
+}
+
+#temperature {
+  color: @blue;
+  padding-right: 1.25rem;
+}
+
+.modules-center {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin: 8px 0px 6px 12px;
+  background-color: rgba(30, 30, 46, 0);
+  border-radius: 16px;
+  border: solid 0px;
+}
+
+.modules-left {
+  padding-left: 12px;
+  padding-right: 12px;
+  margin: 8px 0px 6px 12px;
+  background-color: rgba(30, 30, 46, 0);
+  border-radius: 16px;
+  border: solid 0px;
+}
+
+.modules-right {
+  padding-right: 12px;
+  padding-left: 12px;
+  margin: 8px 0px 6px 0px;
+  background-color: rgba(30, 30, 46, 0);
+  border-radius: 16px;
+  border: solid 0px;
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}

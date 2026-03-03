@@ -1,0 +1,8 @@
+\nHi, Sn0wflakes❄️
+
+   /\_/\   Kitty is Started. Welcome back, comerade!
+  ( o.o )  Roses are red, violets are blue.
+   > ^ <   Exception in thread "main" java.lang.NullPointerException 
+                    at ISOService.setMTI(ISOService.java:402)
+
+HIDUP JOKOWIII  🔥 🔥 🔥 \n
